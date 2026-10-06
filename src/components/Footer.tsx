@@ -1,29 +1,28 @@
-import React from 'react';
+import React from "react";
+import { navLinks, profile } from "../data/portfolio";
+import { handleAnchorClick } from "../lib/scrollTo";
 
-    const Footer = () => {
-      return (
-        <footer className="py-12 border-t border-white/5">
-          <div className="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
-            <div className="text-center md:text-left">
-              <p className="text-2xl font-bold tracking-tighter bg-gradient-to-r from-violet-400 to-blue-400 bg-clip-text text-transparent font-serif mb-2">
-                DA.
-              </p>
-              <p className="text-sm text-muted-foreground">
-                Building the future of digital experiences.
-              </p>
-            </div>
-            
-            <div className="flex gap-8 text-sm text-muted-foreground">
-              <a href="#" className="hover:text-foreground transition-colors">Privacy Policy</a>
-              <a href="#" className="hover:text-foreground transition-colors">Terms of Service</a>
-            </div>
+const Footer = () => {
+  return (
+    <footer className="border-t border-white/8 py-10">
+      <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-5 px-5 text-center md:flex-row md:px-8 md:text-left">
+        <div>
+          <p className="text-2xl font-black text-white">{profile.initials}.</p>
+          <p className="mt-1 text-sm text-white/45">Full-stack development, APIs, mobile, CMS, and automation.</p>
+        </div>
 
-            <p className="text-sm text-muted-foreground">
-              © 2026 Divya Abdar. All rights reserved.
-            </p>
-          </div>
-        </footer>
-      );
-    };
+        <div className="flex flex-wrap justify-center gap-5 text-sm font-medium text-white/48">
+          {navLinks.map((link) => (
+            <a key={link.href} href={link.href} onClick={handleAnchorClick(link.href)} className="hover:text-white">
+              {link.name}
+            </a>
+          ))}
+        </div>
 
-    export default Footer;
+        <p className="text-sm text-white/42">© 2026 {profile.name}. All rights reserved.</p>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;

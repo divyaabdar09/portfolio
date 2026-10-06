@@ -1,101 +1,110 @@
-import React, { useState, useEffect } from 'react';
-    import { motion, AnimatePresence } from 'framer-motion';
-    import { Menu, X, Github, Linkedin, Mail } from 'lucide-react';
+import React, { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { Menu, X } from "lucide-react";
+import { navLinks, profile } from "../data/portfolio";
+import { handleAnchorClick } from "../lib/scrollTo";
 
-    const navLinks = [
-      { name: 'About', href: '#about' },
-      { name: 'Skills', href: '#skills' },
-      { name: 'Experience', href: '#experience' },
-      { name: 'Projects', href: '#projects' },
-      { name: 'Contact', href: '#contact' },
-    ];
+const Navbar = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-    const Navbar = () => {
-      const [isScrolled, setIsScrolled] = useState(false);
-      const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 40);
+    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
-      useEffect(() => {
-        const handleScroll = () => setIsScrolled(window.scrollY > 50);
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-      }, []);
-
-      return (
-        <nav
-          className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-            isScrolled ? 'py-4 bg-background/80 backdrop-blur-xl border-b border-white/10' : 'py-6 bg-transparent'
-          }`}
+  return (
+    <nav
+      className={`fixed left-0 right-0 top-0 z-50 transition-all duration-500 ${
+        isScrolled
+          ? "border-b border-white/10 bg-black/82 py-3 shadow-[0_20px_80px_rgba(0,0,0,0.55)] backdrop-blur-2xl"
+          : "bg-transparent py-5"
+      }`}
+    >
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-5 md:px-8">
+        <motion.a
+          href="#"
+          onClick={handleAnchorClick("#")}
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          className="group flex items-center gap-3"
+          aria-label="Divya Abdar portfolio home"
         >
-          <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-            <motion.a
-              href="#"
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              className="text-2xl font-bold tracking-tighter bg-gradient-to-r from-violet-400 to-blue-400 bg-clip-text text-transparent font-serif"
-            >
-              DA.
-            </motion.a>
+          <span className="grid h-10 w-10 place-items-center rounded-xl border border-white/15 bg-white/10 text-sm font-bold shadow-[inset_0_1px_0_rgba(255,255,255,0.25)] transition-transform group-hover:rotate-6">
+            {profile.initials}
+          </span>
+          <span className="hidden text-sm font-semibold text-white/90 sm:block">
+            {profile.name}
+          </span>
+        </motion.a>
 
-            {/* Desktop Nav */}
-            <div className="hidden md:flex items-center gap-8">
-              {navLinks.map((link, i) => (
-                <motion.a
+        <div className="hidden items-center gap-1 rounded-full border border-white/10 bg-white/[0.06] p-1 backdrop-blur-xl md:flex">
+          {navLinks.map((link, i) => (
+            <motion.a
+              key={link.name}
+              href={link.href}
+              onClick={handleAnchorClick(link.href)}
+              initial={{ opacity: 0, y: -8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: i * 0.06 }}
+              className="rounded-full px-4 py-2 text-sm font-medium text-white/62 transition-colors hover:bg-white/10 hover:text-white"
+            >
+              {link.name}
+            </motion.a>
+          ))}
+        </div>
+
+        <motion.a
+          href={profile.hireMailto}
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          className="hidden rounded-full bg-white px-5 py-2 text-sm font-bold text-black shadow-[0_0_32px_rgba(255,255,255,0.16)] transition-transform hover:-translate-y-0.5 lg:inline-flex"
+        >
+          Hire Me
+        </motion.a>
+
+        <button
+          className="grid h-11 w-11 place-items-center rounded-xl border border-white/10 bg-white/10 text-white md:hidden"
+          onClick={() => setIsMobileMenuOpen((value) => !value)}
+          aria-label="Toggle navigation"
+        >
+          {isMobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
+        </button>
+      </div>
+
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="overflow-hidden border-b border-white/10 bg-black/95 backdrop-blur-2xl md:hidden"
+          >
+            <div className="flex flex-col gap-2 p-5">
+              {navLinks.map((link) => (
+                <a
                   key={link.name}
                   href={link.href}
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.1 }}
-                  className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors relative group"
+                  onClick={handleAnchorClick(link.href, () => setIsMobileMenuOpen(false))}
+                  className="rounded-xl px-4 py-3 text-base font-semibold text-white/75 hover:bg-white/10 hover:text-white"
                 >
                   {link.name}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-violet-500 transition-all group-hover:w-full" />
-                </motion.a>
+                </a>
               ))}
-              <motion.a
-                href="#contact"
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="px-5 py-2 rounded-full bg-primary text-primary-foreground text-sm font-semibold hover:shadow-[0_0_20px_rgba(139,92,246,0.5)] transition-all"
+              <a
+                href={profile.hireMailto}
+                className="mt-2 rounded-xl bg-white px-4 py-3 text-center text-base font-bold text-black"
               >
                 Hire Me
-              </motion.a>
+              </a>
             </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </nav>
+  );
+};
 
-            {/* Mobile Toggle */}
-            <button
-              className="md:hidden text-foreground"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            >
-              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
-          </div>
-
-          {/* Mobile Menu */}
-          <AnimatePresence>
-            {isMobileMenuOpen && (
-              <motion.div
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: 'auto' }}
-                exit={{ opacity: 0, height: 0 }}
-                className="md:hidden bg-background/95 backdrop-blur-2xl border-b border-white/10 overflow-hidden"
-              >
-                <div className="flex flex-col p-6 gap-4">
-                  {navLinks.map((link) => (
-                    <a
-                      key={link.name}
-                      href={link.href}
-                      onClick={() => setIsMobileMenuOpen(false)}
-                      className="text-lg font-medium text-muted-foreground hover:text-foreground"
-                    >
-                      {link.name}
-                    </a>
-                  ))}
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </nav>
-      );
-    };
-
-    export default Navbar;
+export default Navbar;

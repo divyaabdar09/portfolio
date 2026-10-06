@@ -1,102 +1,122 @@
-import React from 'react';
-    import { motion } from 'framer-motion';
-    import { Briefcase, Calendar, MapPin } from 'lucide-react';
+import React from "react";
+import { motion } from "framer-motion";
+import { Award, BriefcaseBusiness, Calendar, GraduationCap, MapPin } from "lucide-react";
+import { experienceHighlights } from "../data/portfolio";
 
-    const Experience = () => {
-      return (
-        <section id="experience" className="py-24 relative">
-          <div className="container mx-auto px-6">
-            <h2 className="text-4xl font-bold mb-16 text-center">Professional Journey</h2>
-            
-            <div className="max-w-4xl mx-auto relative">
-              {/* Timeline Line */}
-              <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-violet-500/50 to-transparent -translate-x-1/2 hidden md:block" />
+const credentials = [
+  {
+    title: "Bachelor of Engineering in Computer Science",
+    org: "Shivaji University, Kolhapur",
+    meta: "2021 - 2025 | CGPA 8.64 / 10",
+    icon: GraduationCap,
+  },
+  {
+    title: "Industrial Training Programme in Java",
+    org: "Sunbeam Pune",
+    meta: "Java foundations and software concepts",
+    icon: Award,
+  },
+  {
+    title: "Internet of Things Certification",
+    org: "IIT Bombay - E-Yantra",
+    meta: "IoT systems and smart workflows",
+    icon: Award,
+  },
+];
 
-              <motion.div
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                className="relative mb-12 md:w-1/2 md:pr-12 md:ml-0 ml-8"
-              >
-                {/* Node */}
-                <div className="absolute left-[-33px] md:left-auto md:right-[-9px] top-0 w-4 h-4 rounded-full bg-violet-500 shadow-[0_0_15px_rgba(139,92,246,0.8)] z-10" />
-                
-                <div className="p-8 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm hover:bg-white/10 transition-all">
-                  <div className="flex items-center gap-2 text-violet-400 text-sm font-mono mb-4">
-                    <Calendar size={14} /> 2025 — Present
-                  </div>
-                  <h3 className="text-2xl font-bold mb-1">Junior Software Engineer</h3>
-                  <p className="text-lg text-foreground/80 mb-4">BlueSky Infotech</p>
-                  <div className="flex items-center gap-2 text-muted-foreground text-sm mb-6">
-                    <MapPin size={14} /> Mumbai, India
-                  </div>
-                  <ul className="space-y-3 text-sm text-muted-foreground">
-                    <li className="flex gap-2">
-                      <span className="text-violet-500">•</span>
-                      Building scalable applications with Laravel and React.
-                    </li>
-                    <li className="flex gap-2">
-                      <span className="text-violet-500">•</span>
-                      Developing and documenting robust REST APIs.
-                    </li>
-                    <li className="flex gap-2">
-                      <span className="text-violet-500">•</span>
-                      Optimizing database queries and schema designs.
-                    </li>
-                    <li className="flex gap-2">
-                      <span className="text-violet-500">•</span>
-                      Implementing secure JWT-based authentication systems.
-                    </li>
-                  </ul>
-                </div>
-              </motion.div>
+const Experience = () => {
+  return (
+    <section id="experience" className="relative py-24 md:py-32">
+      <div className="mx-auto max-w-7xl px-5 md:px-8">
+        <div className="mx-auto mb-16 max-w-3xl text-center">
+          <p className="section-kicker justify-center">Experience</p>
+          <h2 className="mt-4 text-4xl font-black text-white md:text-6xl">
+            Professional work with production-facing systems.
+          </h2>
+        </div>
 
-              {/* Education Section */}
-              <div className="mt-24">
-                <h3 className="text-2xl font-bold mb-12 text-center">Education & Certifications</h3>
-                <div className="grid md:grid-cols-3 gap-6">
-                  {[
-                    {
-                      title: "BE Computer Science",
-                      org: "Shivaji University",
-                      meta: "CGPA: 8.64",
-                      icon: <Briefcase size={20} />
-                    },
-                    {
-                      title: "Java Training",
-                      org: "Sunbeam Pune",
-                      meta: "Advanced Concepts",
-                      icon: <Briefcase size={20} />
-                    },
-                    {
-                      title: "IoT Certification",
-                      org: "IIT Bombay",
-                      meta: "Smart Systems",
-                      icon: <Briefcase size={20} />
-                    }
-                  ].map((item, i) => (
-                    <motion.div
-                      key={i}
-                      initial={{ opacity: 0, scale: 0.9 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      transition={{ delay: i * 0.1 }}
-                      viewport={{ once: true }}
-                      className="p-6 rounded-2xl border border-white/10 bg-white/5 text-center group hover:border-violet-500/50 transition-colors"
-                    >
-                      <div className="w-12 h-12 rounded-xl bg-violet-500/10 flex items-center justify-center mx-auto mb-4 text-violet-400 group-hover:scale-110 transition-transform">
-                        {item.icon}
-                      </div>
-                      <h4 className="font-bold mb-1">{item.title}</h4>
-                      <p className="text-sm text-muted-foreground mb-2">{item.org}</p>
-                      <span className="text-xs font-mono text-violet-400/80">{item.meta}</span>
-                    </motion.div>
-                  ))}
-                </div>
+        <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
+          <motion.article
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="black-panel relative overflow-hidden rounded-[1.6rem] border border-white/10 p-7 backdrop-blur-xl"
+          >
+            <div className="absolute right-0 top-0 h-40 w-40 rounded-full bg-emerald-300/10 blur-3xl" />
+            <div className="relative">
+              <span className="grid h-14 w-14 place-items-center rounded-2xl bg-emerald-300/10 text-emerald-200">
+                <BriefcaseBusiness size={26} />
+              </span>
+              <div className="mt-8 flex flex-wrap gap-3 text-sm text-white/56">
+                <span className="inline-flex items-center gap-2 rounded-full border border-white/10 px-3 py-1.5">
+                  <Calendar size={15} />
+                  July 2025 - Present
+                </span>
+                <span className="inline-flex items-center gap-2 rounded-full border border-white/10 px-3 py-1.5">
+                  <MapPin size={15} />
+                  Pune, India
+                </span>
               </div>
+              <h3 className="mt-6 text-3xl font-black text-white">Junior Software Engineer</h3>
+              <p className="mt-2 text-xl text-emerald-200">BlueSky Infotech</p>
+              <p className="mt-5 leading-7 text-white/62">
+                I work across web and application development, building frontend interfaces,
+                Laravel backend services, REST APIs, databases, authentication flows, CMS
+                functionality, dashboards, Firebase services, and Flutter app features.
+              </p>
+            </div>
+          </motion.article>
+
+          <div className="relative rounded-[1.6rem] border border-white/10 bg-white/[0.04] p-4">
+            <div className="absolute bottom-8 left-10 top-8 w-px bg-gradient-to-b from-emerald-300 via-cyan-300 to-transparent" />
+            <div className="space-y-4">
+              {experienceHighlights.map((item, index) => (
+                <motion.div
+                  key={item}
+                  initial={{ opacity: 0, x: 24 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.08 }}
+                  viewport={{ once: true }}
+                  className="black-panel relative ml-11 rounded-2xl border border-white/10 p-5 backdrop-blur-xl"
+                >
+                  <span className="absolute -left-[3.2rem] top-6 grid h-7 w-7 place-items-center rounded-full border border-emerald-200/30 bg-black text-xs font-black text-emerald-200">
+                    {index + 1}
+                  </span>
+                  <p className="leading-7 text-white/68">{item}</p>
+                </motion.div>
+              ))}
             </div>
           </div>
-        </section>
-      );
-    };
+        </div>
 
-    export default Experience;
+        <div className="mt-16 grid gap-5 md:grid-cols-3">
+          {credentials.map((item, index) => {
+            const Icon = item.icon;
+            return (
+              <motion.article
+                key={item.title}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.08 }}
+                viewport={{ once: true }}
+                whileHover={{ y: -8 }}
+                className="rounded-2xl border border-white/10 bg-white/[0.045] p-6"
+              >
+                <span className="grid h-12 w-12 place-items-center rounded-xl bg-cyan-300/10 text-cyan-200">
+                  <Icon size={23} />
+                </span>
+                <h4 className="mt-5 text-lg font-black text-white">{item.title}</h4>
+                <p className="mt-2 text-sm text-white/58">{item.org}</p>
+                <p className="mt-4 text-xs font-semibold uppercase text-emerald-200/80">
+                  {item.meta}
+                </p>
+              </motion.article>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Experience;
