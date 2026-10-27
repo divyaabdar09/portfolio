@@ -30,7 +30,7 @@ const Experience = () => {
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <div className="mx-auto mb-16 max-w-3xl text-center">
           <p className="section-kicker justify-center">Experience</p>
-          <h2 className="mt-4 text-4xl font-black text-white md:text-6xl">
+          <h2 className="mt-4 text-3xl font-black leading-tight text-white sm:text-4xl md:text-5xl">
             Professional work with production-facing systems.
           </h2>
         </div>

@@ -24,7 +24,7 @@ const Skills = () => {
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <div className="mx-auto mb-14 max-w-3xl text-center">
           <p className="section-kicker justify-center">Technical Skills</p>
-          <h2 className="mt-4 text-4xl font-black leading-tight text-white md:text-6xl">
+          <h2 className="mt-4 text-3xl font-black leading-tight text-white sm:text-4xl md:text-5xl">
             A practical stack for shipping real products.
           </h2>
           <p className="mt-5 text-lg leading-8 text-white/60">

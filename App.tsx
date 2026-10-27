@@ -7,12 +7,14 @@ import { HashRouter as Router, Routes, Route } from "react-router-dom";
 
 import Home from "./src/pages/Home.tsx";
 import NotFound from "./src/pages/NotFound.tsx";
+import IntroSplash from "./src/components/IntroSplash.tsx";
 
 const App: React.FC = () => {
   return (
     <Theme appearance="dark" radius="large" scaling="100%">
       <Router>
         <main className="min-h-screen font-sans bg-background">
+          <IntroSplash />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="*" element={<NotFound />} />

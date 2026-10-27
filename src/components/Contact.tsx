@@ -20,7 +20,7 @@ const Contact = () => {
           <div className="relative grid gap-10 lg:grid-cols-[1fr_0.85fr] lg:items-center">
             <div>
               <p className="section-kicker">Contact</p>
-              <h2 className="mt-4 text-4xl font-black leading-tight text-white md:text-6xl">
+              <h2 className="mt-4 text-3xl font-black leading-tight text-white sm:text-4xl md:text-5xl">
                 Let's build something useful, reliable, and easy to maintain.
               </h2>
               <p className="mt-6 max-w-2xl text-lg leading-8 text-white/62">

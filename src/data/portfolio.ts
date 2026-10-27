@@ -118,16 +118,25 @@ export const projects = [
     tech: ["PHP", "PostgreSQL", "JWT", "REST APIs", "IoT", "QR"],
     image: projectImage("medminder.png"),
     highlights: ["Backend architecture", "Secure APIs", "Database integration", "QR workflows"],
+    links: [],
   },
   {
-    title: "JISO Organization Platform",
-    slug: "jiso-organization-platform",
-    route: projectRoute("jiso-organization-platform"),
+    title: "JainSetu",
+    slug: "jainsetu",
+    route: projectRoute("jainsetu"),
     category: "Community Management & Digital Ecosystem",
-    desc: "A large-scale Jain community platform bringing services, events, galleries, members, support teams, and CMS-managed pages into one ecosystem.",
+    desc: "A connected Jain community platform bringing members, organizations, services, events, galleries, and CMS-managed experiences into one digital ecosystem.",
     tech: ["React", "JavaScript", "Laravel", "PHP", "MySQL", "REST APIs", "Flutter"],
     image: projectImage("jiso-organization.png"),
     highlights: ["Dynamic frontend modules", "Laravel APIs", "Admin CMS", "Role-based access"],
+    links: [
+      {
+        label: "Android App",
+        href: "https://play.google.com/store/apps/details?id=com.jisofoundation.jiso&pcampaignid=web_share",
+      },
+      { label: "Website", href: "https://jainapp.org/" },
+      { label: "JISO Portal", href: "https://jiso.jainapp.org/" },
+    ],
   },
   {
     title: "Kent Logistics",
@@ -138,6 +147,12 @@ export const projects = [
     tech: ["Flutter", "Laravel", "PHP", "MySQL", "REST APIs", "Firebase"],
     image: projectImage("kent-logistics.png"),
     highlights: ["Orders and shipments", "OTP auth", "FCM tokens", "Admin portal"],
+    links: [
+      {
+        label: "View on Google Play",
+        href: "https://play.google.com/store/apps/details?id=com.kent.logistics.app",
+      },
+    ],
   },
   {
     title: "TailorMate - Tailor Management System",
@@ -156,6 +171,24 @@ export const projects = [
       "API integration",
       "Data and workflow management",
     ],
+    links: [],
+  },
+  {
+    title: "MessMitra",
+    slug: "messmitra",
+    route: projectRoute("messmitra"),
+    category: "Mess Management Mobile Application",
+    desc: "A mobile solution that organizes mess operations and member-facing workflows in one focused experience, making routine records, communication, and daily service management easier to handle.",
+    tech: ["Flutter", "REST APIs", "Firebase", "Mobile UI"],
+    image:
+      "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&q=80&w=1200",
+    highlights: ["Mobile application", "API integration", "Data handling", "Operational workflows"],
+    links: [
+      {
+        label: "View on Google Play",
+        href: "https://play.google.com/store/apps/details?id=com.tangiblesofttech.messmitra",
+      },
+    ],
   },
   {
     title: "Scan Rewards",
@@ -166,6 +199,12 @@ export const projects = [
     tech: ["PHP", "MySQL", "REST APIs", "JavaScript"],
     image: projectImage("scan-rewards.png"),
     highlights: ["Reward management", "Product tracking", "Backend modules", "Data workflows"],
+    links: [
+      {
+        label: "View on Google Play",
+        href: "https://play.google.com/store/apps/details?id=com.mayureshpaints&pcampaignid=web_share",
+      },
+    ],
   },
 ];
 
